@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Feedback{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Feedback</h2>
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            {{ form.title(class="form-control", id="title", value=feedback.title) }}
+            {% for error in form.title.errors %}
+                <small class="text-danger">{{ error }}</small>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content</label>
+            {{ form.content(class="form-control", id="content", value=feedback.content) }}
+            {% for error in form.content.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Update</button>
+    </form>
+</div>
+{% endblock %}
